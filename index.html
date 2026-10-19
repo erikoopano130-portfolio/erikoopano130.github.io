@@ -1,180 +1,893 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Portfolio of [Your Name] — Designer and Developer specializing in web creation and digital art.">
-<title>ERIKO | Creative Portfolio</title>
-<style>
-:root{--bg:#101010;--panel:#1b1b1b;--line:#303030;--text:#f5f5f5;--muted:#aaa;--max:1180px}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.65}
-a{color:inherit;text-decoration:none}
-.container{width:min(var(--max),calc(100% - 48px));margin:auto}
-nav{position:sticky;top:0;z-index:30;background:rgba(16,16,16,.94);backdrop-filter:blur(12px);border-bottom:1px solid #242424}
-.nav-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.logo{font-size:16px;font-weight:800;letter-spacing:3px}
-.nav-links{display:flex;gap:26px;flex-wrap:wrap}
-.nav-links a{font-size:13px;color:#bbb;transition:color .2s}.nav-links a:hover,.nav-links a:focus-visible{color:#fff}
-.hero{padding:110px 0 100px;border-bottom:1px solid var(--line)}
-.eyebrow{color:#aaa;font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:700;margin:0 0 20px}
-.hero h1{font-size:clamp(46px,7vw,92px);line-height:1.07;letter-spacing:-3px;margin:0;font-weight:800;max-width:1000px}
-.hero h1 span{color:#858585}
-.hero-tags{margin:28px 0 16px;color:#ddd;font-size:15px;letter-spacing:.2px}
-.hero-description{max-width:650px;color:#aaa;font-size:17px;margin:0 0 30px}
-.actions{display:flex;gap:12px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;justify-content:center;border:1px solid #666;border-radius:5px;padding:12px 22px;font-size:13px;font-weight:700;transition:.2s}.button.primary{background:#fff;color:#111;border-color:#fff}.button:hover{transform:translateY(-2px)}.button.secondary:hover{background:#222}
-section{padding:85px 0;border-bottom:1px solid var(--line)}
-.section-top{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:28px}
-h2{font-size:clamp(26px,3vw,35px);line-height:1.2;letter-spacing:-.8px;margin:0}
-.section-number{font-size:12px;color:#777;letter-spacing:2px}
-.about-text{font-size:17px;max-width:850px;color:#c7c7c7;margin:0}.about-text + .about-text{margin-top:16px}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.card{display:block;background:var(--panel);border:1px solid #292929;border-radius:9px;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s;height:100%}
-.card:hover,.card:focus-visible{transform:translateY(-5px);border-color:#777;box-shadow:0 16px 35px rgba(0,0,0,.3)}
-.card img{display:block;width:100%;aspect-ratio:16/11;object-fit:cover;background:#262626}
-.card-content{padding:20px 20px 22px}.card-category{font-size:10px;letter-spacing:2px;color:#999;text-transform:uppercase;margin-bottom:8px}.card h3{font-size:19px;margin:0 0 6px;letter-spacing:-.3px}.card p{font-size:13px;color:#aaa;line-height:1.55;margin:0}.card .arrow{display:inline-block;margin-top:15px;font-size:12px;font-weight:700;color:#ddd}
-.skills-intro{color:#aaa;margin:0 0 24px;font-size:15px}.skill-list{display:flex;flex-wrap:wrap;gap:10px}.badge{padding:9px 14px;border:1px solid #353535;background:#1c1c1c;border-radius:5px;font-size:13px;color:#ddd}
-.contact-block{display:flex;justify-content:space-between;gap:30px;align-items:flex-end}.contact-title{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin:0 0 16px}.contact-copy{color:#aaa;margin:0}.contact-links{display:flex;flex-direction:column;gap:10px;align-items:flex-start}.contact-links a{color:#ddd;font-size:14px;overflow-wrap:anywhere}.contact-links a:hover{text-decoration:underline}
-footer{padding:24px 0;color:#777;font-size:12px;display:flex;justify-content:space-between;gap:16px}
-@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:85px 0 75px}.contact-block{align-items:flex-start;flex-direction:column}}
-@media(max-width:560px){.container{width:calc(100% - 36px)}.nav-inner{align-items:flex-start;flex-direction:column;padding:16px 0;gap:12px}.nav-links{gap:15px}.nav-links a{font-size:12px}.hero{padding:68px 0}.hero h1{font-size:clamp(39px,10vw,55px)}.hero-description{font-size:15px}section{padding:60px 0}.grid{grid-template-columns:1fr}footer{flex-direction:column}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERIKO | Digital Art & UI Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f3ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            900: '#312e81',
+                        },
+                        cyanAccent: '#06b6d4',
+                        amberAccent: '#f59e0b',
+                        darkBg: '#0b0f17',
+                        darkCard: '#151c28',
+                        darkBorder: '#1e293b'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+        /* Glassmorphism styling */
+        .glass-panel {
+            background: rgba(21, 28, 40, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .light .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .art-card-overlay {
+            background: linear-gradient(0deg, rgba(11,15,23,0.95) 0%, rgba(11,15,23,0.4) 60%, rgba(0,0,0,0) 100%);
+        }
+        .light .art-card-overlay {
+            background: linear-gradient(0deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.4) 60%, rgba(255,255,255,0) 100%);
+        }
+    </style>
 </head>
-<body>
+<body class="bg-darkBg text-slate-100 dark:bg-darkBg dark:text-slate-100 transition-colors duration-300">
 
-<!-- Navigation -->
-<nav aria-label="Main navigation">
-  <div class="container nav-inner">
-    <a class="logo" href="#top">PORTFOLIO.</a>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</nav>
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-40 glass-panel border-b border-slate-800/50 light:border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-cyanAccent to-amberAccent flex items-center justify-center text-white font-black text-xl shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300">
+                    A
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent light:from-slate-900 light:to-indigo-600">AETHERIA</span>
+                    <span class="block text-[10px] tracking-widest text-indigo-400 font-semibold uppercase -mt-1">Digital Studio</span>
+                </div>
+            </a>
 
-<main id="top">
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="container">
-      <p class="eyebrow">Creative Portfolio / Selected Projects</p>
-      <h1>Digital Creator.<br><span>Designer &amp; Builder.</span></h1>
-      <p class="hero-tags">Web Development &nbsp;•&nbsp; UI/UX &nbsp;•&nbsp; Digital Art</p>
-      <p class="hero-description">I build engaging digital experiences, clean web interfaces, and thoughtful designs that bring ideas to life.</p>
-      <div class="actions">
-        <a class="button primary" href="#work">Explore My Work ↗</a>
-        <a class="button secondary" href="#contact">Get in Touch</a>
-      </div>
-    </div>
-  </header>
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#hero" class="hover:text-indigo-400 transition-colors">Home</a>
+                <a href="#gallery" class="hover:text-indigo-400 transition-colors">Gallery</a>
+                <a href="#skills" class="hover:text-indigo-400 transition-colors">Skills</a>
+                <a href="#contact" class="hover:text-indigo-400 transition-colors">Contact</a>
+                <button onclick="openGithubModal()" class="text-amber-400 hover:text-amber-300 flex items-center space-x-1.5 bg-amber-400/10 px-3 py-1.5 rounded-lg border border-amber-400/20 transition-all hover:bg-amber-400/20">
+                    <i class="fa-brands fa-github"></i>
+                    <span>Host on GitHub</span>
+                </button>
+            </nav>
 
-  <!-- About Section -->
-  <section id="about">
-    <div class="container">
-      <div class="section-top">
-        <h2>About Me</h2>
-        <span class="section-number">01 / INTRODUCTION</span>
-      </div>
-      <p class="about-text">I'm a creator passionate about building clean interfaces, functional applications, and striking visual designs.</p>
-      <p class="about-text">Combining technical execution with creative styling, I focus on building robust digital projects optimized for performance and aesthetic impact.</p>
-    </div>
-  </section>
+            <!-- Actions -->
+            <div class="flex items-center space-x-3">
+                <!-- Theme Toggle -->
+                <button id="themeToggle" onclick="toggleTheme()" class="p-2.5 rounded-xl bg-slate-800/80 light:bg-slate-200 text-slate-300 light:text-slate-700 hover:text-indigo-400 transition-colors" title="Toggle Theme">
+                    <i class="fa-solid fa-moon text-lg dark:block hidden"></i>
+                    <i class="fa-solid fa-sun text-lg dark:hidden block text-amber-500"></i>
+                </button>
 
-  <!-- Work Section -->
-  <section id="work">
-    <div class="container">
-      <div class="section-top">
-        <h2>Selected Work</h2>
-        <span class="section-number">02 / PORTFOLIO</span>
-      </div>
-      <div class="grid">
-        <!-- Project Card 1 -->
-        <a class="card" href="#">
-          <img src="images/project1.png" alt="Preview of Project 1" loading="lazy">
-          <div class="card-content">
-            <div class="card-category">Web Development</div>
-            <h3>Project One</h3>
-            <p>A web application built to solve user problems efficiently.</p>
-            <span class="arrow">View Project ↗</span>
-          </div>
-        </a>
-        <!-- Project Card 2 -->
-        <a class="card" href="#">
-          <img src="images/project2.png" alt="Preview of Project 2" loading="lazy">
-          <div class="card-content">
-            <div class="card-category">UI / UX Design</div>
-            <h3>Project Two</h3>
-            <p>User interface design focusing on seamless user experience.</p>
-            <span class="arrow">View Project ↗</span>
-          </div>
-        </a>
-        <!-- Project Card 3 -->
-        <a class="card" href="#">
-          <img src="images/project3.png" alt="Preview of Project 3" loading="lazy">
-          <div class="card-content">
-            <div class="card-category">Creative Arts</div>
-            <h3>Project Three</h3>
-            <p>Digital illustration and asset creation work.</p>
-            <span class="arrow">View Project ↗</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
+                <!-- Add Artwork CTA -->
+                <button onclick="openAddModal()" class="hidden sm:flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl font-medium text-sm transition-all shadow-lg shadow-indigo-600/30 hover:shadow-indigo-500/50">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                    <span>Add Artwork</span>
+                </button>
 
-  <!-- Skills Section -->
-  <section id="skills">
-    <div class="container">
-      <div class="section-top">
-        <h2>Skills &amp; Tools</h2>
-        <span class="section-number">03 / TOOLKIT</span>
-      </div>
-      <p class="skills-intro">Languages, frameworks, and tools used across development and design.</p>
-      <div class="skill-list">
-        <span class="badge">HTML5 / CSS3</span>
-        <span class="badge">JavaScript</span>
-        <span class="badge">Git &amp; GitHub</span>
-        <span class="badge">Figma</span>
-        <span class="badge">Adobe Photoshop</span>
-        <span class="badge">Responsive Design</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-top">
-        <h2>Contact</h2>
-        <span class="section-number">04 / CONNECT</span>
-      </div>
-      <div class="contact-block">
-        <div>
-          <p class="contact-title">Let's create<br>something great.</p>
-          <p class="contact-copy">Available for new opportunities and collaborations.</p>
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-xl bg-slate-800/80 light:bg-slate-200 text-slate-300 light:text-slate-700">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
         </div>
-        <div class="contact-links">
-          <a href="mailto:your_email@example.com">your_email@example.com ↗</a>
-          <a href="https://github.com/yourusername" target="_blank">GitHub: yourusername ↗</a>
-          <a href="https://linkedin.com" target="_blank">LinkedIn Profile ↗</a>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden glass-panel border-t border-slate-800 px-4 pt-3 pb-6 space-y-3">
+            <a href="#hero" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white">Home</a>
+            <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white">Gallery</a>
+            <a href="#skills" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white">Skills</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white">Contact</a>
+            <button onclick="openGithubModal(); toggleMobileMenu()" class="w-full text-left py-2 text-amber-400 font-medium">
+                <i class="fa-brands fa-github mr-2"></i> GitHub Hosting Guide
+            </button>
+            <button onclick="openAddModal(); toggleMobileMenu()" class="w-full bg-indigo-600 text-white py-2.5 rounded-xl font-medium text-center">
+                + Add New Artwork
+            </button>
         </div>
-      </div>
+    </header>
+
+    <main class="pt-24">
+        <!-- Hero Section -->
+        <section id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 flex flex-col md:flex-row items-center gap-12 overflow-hidden">
+            <!-- Background Glow FX -->
+            <div class="absolute -top-40 -left-40 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-40 right-0 w-96 h-96 bg-cyanAccent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <!-- Left Content -->
+            <div class="flex-1 space-y-6 text-center md:text-left z-10">
+                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider">
+                    <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+                    <span>Available for Freelance & Concepts</span>
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
+                    Crafting Visuals Beyond <span class="bg-gradient-to-r from-indigo-400 via-cyanAccent to-amber-400 bg-clip-text text-transparent">Boundaries</span>.
+                </h1>
+                <p class="text-slate-400 light:text-slate-600 text-base sm:text-lg max-w-2xl leading-relaxed">
+                    Welcome to my digital gallery. I specialize in immersive environment backgrounds, expressive character art, intricate vector symbols, and futuristic game UI designs.
+                </p>
+               
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
+                    <a href="#gallery" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white font-medium shadow-lg shadow-indigo-600/30 hover:shadow-indigo-500/50 transition-all flex items-center space-x-2">
+                        <span>Explore Gallery</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                    <button onclick="openGithubModal()" class="px-6 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-200 font-medium transition-all flex items-center space-x-2">
+                        <i class="fa-brands fa-github text-lg"></i>
+                        <span>Deploy Your Own</span>
+                    </button>
+                </div>
+
+                <!-- Stats Bar -->
+                <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800/80 light:border-slate-300/80 max-w-md mx-auto md:mx-0">
+                    <div>
+                        <div class="text-2xl font-bold text-white light:text-slate-900" id="statTotalArt">12</div>
+                        <div class="text-xs text-slate-400">Total Artworks</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-cyanAccent">4</div>
+                        <div class="text-xs text-slate-400">Categories</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-amberAccent">6+</div>
+                        <div class="text-xs text-slate-400">Years Exp.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Featured Art Spotlight -->
+            <div class="flex-1 w-full max-w-md md:max-w-none relative z-10">
+                <div class="relative group rounded-3xl overflow-hidden glass-panel p-3 border border-slate-700/50 shadow-2xl transition-transform duration-500 hover:-translate-y-2">
+                    <div class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-900">
+                        <img id="heroFeaturedImg" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="Featured Artwork" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 rounded-full bg-indigo-600/90 text-white text-xs font-semibold uppercase tracking-wider backdrop-blur-md">
+                                Featured Piece
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4 text-left">
+                            <h3 class="text-xl font-bold text-white mb-1" id="heroFeaturedTitle">Neon Cyber Metropolis</h3>
+                            <p class="text-xs text-indigo-300 flex items-center gap-2">
+                                <span>Background</span> • <span>Blender / Photoshop</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <h2 class="text-3xl font-bold tracking-tight">Art Gallery</h2>
+                    <p class="text-slate-400 light:text-slate-600 text-sm mt-1">Browse categorized digital assets and concept designs</p>
+                </div>
+
+                <!-- Filter Nav Tabs -->
+                <div class="flex flex-wrap gap-2 bg-slate-900/80 light:bg-slate-200 p-1.5 rounded-2xl border border-slate-800 light:border-slate-300">
+                    <button onclick="filterGallery('all')" class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-indigo-600 text-white shadow-md" data-category="all">
+                        All Works
+                    </button>
+                    <button onclick="filterGallery('Background')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-400 hover:text-white transition-all" data-category="Background">
+                        <i class="fa-solid fa-mountain-sun mr-1"></i> Backgrounds
+                    </button>
+                    <button onclick="filterGallery('Characters')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-400 hover:text-white transition-all" data-category="Characters">
+                        <i class="fa-solid fa-user-ninja mr-1"></i> Characters
+                    </button>
+                    <button onclick="filterGallery('Symbols')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-400 hover:text-white transition-all" data-category="Symbols">
+                        <i class="fa-solid fa-shield-halved mr-1"></i> Symbols
+                    </button>
+                    <button onclick="filterGallery('UI')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-400 hover:text-white transition-all" data-category="UI">
+                        <i class="fa-solid fa-layer-group mr-1"></i> UIs
+                    </button>
+                </div>
+            </div>
+
+            <!-- Art Cards Grid -->
+            <div id="artGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Art Cards dynamically injected here by JS -->
+            </div>
+           
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden text-center py-20 bg-slate-900/30 rounded-3xl border border-dashed border-slate-800">
+                <i class="fa-regular fa-image text-4xl text-slate-600 mb-3"></i>
+                <h3 class="text-lg font-semibold text-slate-300">No artwork found</h3>
+                <p class="text-sm text-slate-500">Try changing the category filter or add a new artwork piece.</p>
+            </div>
+        </section>
+
+        <!-- About & Software / Skills Section -->
+        <section id="skills" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="glass-panel rounded-3xl p-8 sm:p-12 border border-slate-800 light:border-slate-300 relative overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="text-indigo-400 text-xs font-semibold uppercase tracking-wider">Toolbox & Expertise</span>
+                        <h2 class="text-3xl font-bold mt-2 mb-4">Mastered Digital Software</h2>
+                        <p class="text-slate-400 light:text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+                            Bringing imaginative realms to life using industry-standard digital tools. From high-poly 3D environment drafting to vector iconography and game user interfaces.
+                        </p>
+
+                        <!-- Software Grid -->
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                            <div class="p-3.5 rounded-2xl bg-slate-800/50 light:bg-slate-100 border border-slate-700/50 light:border-slate-200 flex items-center space-x-3">
+                                <i class="fa-solid fa-paintbrush text-indigo-400 text-xl"></i>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-slate-200 light:text-slate-800">Photoshop</h4>
+                                    <span class="text-[10px] text-slate-500">Digital Painting</span>
+                                </div>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-slate-800/50 light:bg-slate-100 border border-slate-700/50 light:border-slate-200 flex items-center space-x-3">
+                                <i class="fa-solid fa-cube text-amber-400 text-xl"></i>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-slate-200 light:text-slate-800">Blender</h4>
+                                    <span class="text-[10px] text-slate-500">3D Environments</span>
+                                </div>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-slate-800/50 light:bg-slate-100 border border-slate-700/50 light:border-slate-200 flex items-center space-x-3">
+                                <i class="fa-brands fa-figma text-pink-400 text-xl"></i>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-slate-200 light:text-slate-800">Figma</h4>
+                                    <span class="text-[10px] text-slate-500">UI / UX Design</span>
+                                </div>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-slate-800/50 light:bg-slate-100 border border-slate-700/50 light:border-slate-200 flex items-center space-x-3">
+                                <i class="fa-solid fa-pen-nib text-orange-400 text-xl"></i>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-slate-200 light:text-slate-800">Illustrator</h4>
+                                    <span class="text-[10px] text-slate-500">Vector Icons</span>
+                                </div>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-slate-800/50 light:bg-slate-100 border border-slate-700/50 light:border-slate-200 flex items-center space-x-3">
+                                <i class="fa-solid fa-wand-magic-sparkles text-cyanAccent text-xl"></i>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-slate-200 light:text-slate-800">Procreate</h4>
+                                    <span class="text-[10px] text-slate-500">Concept Sketches</span>
+                                </div>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-slate-800/50 light:bg-slate-100 border border-slate-700/50 light:border-slate-200 flex items-center space-x-3">
+                                <i class="fa-solid fa-gamepad text-emerald-400 text-xl"></i>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-slate-200 light:text-slate-800">Unreal Engine</h4>
+                                    <span class="text-[10px] text-slate-500">World Building</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Process Card -->
+                    <div class="p-6 sm:p-8 rounded-2xl bg-slate-900/80 light:bg-white border border-slate-800 light:border-slate-200 space-y-4">
+                        <h3 class="text-lg font-bold flex items-center gap-2">
+                            <i class="fa-solid fa-palette text-indigo-400"></i>
+                            <span>Art Creation Workflow</span>
+                        </h3>
+                        <div class="space-y-3 text-xs sm:text-sm text-slate-300 light:text-slate-600">
+                            <div class="flex items-start space-x-3">
+                                <span class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-xs shrink-0">1</span>
+                                <p><strong class="text-white light:text-slate-900">Conceptualization:</strong> Quick thumbnail sketches and color palette exploratory boards.</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="w-6 h-6 rounded-full bg-cyanAccent/20 text-cyanAccent flex items-center justify-center font-bold text-xs shrink-0">2</span>
+                                <p><strong class="text-white light:text-slate-900">3D Blockout / Linework:</strong> Constructing base forms or vector grid layouts for accurate perspective.</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="w-6 h-6 rounded-full bg-amberAccent/20 text-amberAccent flex items-center justify-center font-bold text-xs shrink-0">3</span>
+                                <p><strong class="text-white light:text-slate-900">Rendering & Detail:</strong> Lighting passes, texturing, atmospheric fog, and UI component polished states.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <span class="text-indigo-400 text-xs font-semibold uppercase tracking-wider">Get in Touch</span>
+                    <h2 class="text-3xl font-bold mt-2 mb-4">Let's Collaborate</h2>
+                    <p class="text-slate-400 light:text-slate-600 text-sm mb-6 leading-relaxed">
+                        Have a game project, UI requirement, or concept commission in mind? Reach out and let's create something remarkable together.
+                    </p>
+
+                    <!-- Social Media Links -->
+                    <div class="flex items-center space-x-4 mb-8">
+                        <a href="#" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center transition-all">
+                            <i class="fa-brands fa-artstation text-lg"></i>
+                        </a>
+                        <a href="#" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center transition-all">
+                            <i class="fa-brands fa-behance text-lg"></i>
+                        </a>
+                        <a href="#" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center transition-all">
+                            <i class="fa-brands fa-x-twitter text-lg"></i>
+                        </a>
+                        <a href="#" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center transition-all">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center transition-all">
+                            <i class="fa-brands fa-github text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <form onsubmit="handleContactSubmit(event)" class="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800 light:border-slate-300 space-y-4">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 light:text-slate-700 mb-1">Your Name</label>
+                        <input type="text" required placeholder="Alex Vance" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 light:bg-white border border-slate-700 light:border-slate-300 text-sm focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 light:text-slate-700 mb-1">Email Address</label>
+                        <input type="email" required placeholder="alex@studio.com" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 light:bg-white border border-slate-700 light:border-slate-300 text-sm focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 light:text-slate-700 mb-1">Message</label>
+                        <textarea rows="4" required placeholder="Tell me about your project or commission..." class="w-full px-4 py-3 rounded-xl bg-slate-900/80 light:bg-white border border-slate-700 light:border-slate-300 text-sm focus:outline-none focus:border-indigo-500"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition-all shadow-lg shadow-indigo-600/30">
+                        Send Message
+                    </button>
+                    <div id="contactToast" class="hidden text-center text-xs text-emerald-400 font-medium pt-2">
+                        <i class="fa-solid fa-circle-check mr-1"></i> Message sent successfully! I will reply soon.
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 light:border-slate-300 py-8 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 Aetheria Digital Art Portfolio. Designed for artists & developers.</p>
+            <button onclick="openGithubModal()" class="text-indigo-400 hover:text-indigo-300 flex items-center space-x-1.5">
+                <i class="fa-brands fa-github"></i>
+                <span>How to host this on GitHub Pages</span>
+            </button>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div class="relative max-w-5xl w-full glass-panel rounded-3xl border border-slate-700 overflow-hidden my-auto flex flex-col lg:flex-row max-h-[90vh]">
+            <!-- Close Button -->
+            <button onclick="closeLightbox()" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-slate-900/80 hover:bg-slate-800 text-slate-300 flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- Modal Image Container -->
+            <div class="flex-1 bg-black/60 flex items-center justify-center p-4 min-h-[300px] lg:min-h-[500px]">
+                <img id="lightboxImg" src="" alt="Artwork View" class="max-h-[70vh] w-auto max-w-full object-contain rounded-xl shadow-2xl">
+            </div>
+
+            <!-- Modal Sidebar Info -->
+            <div class="w-full lg:w-96 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto border-t lg:border-t-0 lg:border-l border-slate-800 bg-slate-900/90">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span id="lightboxCategory" class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">
+                            Category
+                        </span>
+                        <span id="lightboxDate" class="text-xs text-slate-400">Oct 2026</span>
+                    </div>
+
+                    <h3 id="lightboxTitle" class="text-2xl font-bold text-white">Artwork Title</h3>
+
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Software Used</h4>
+                        <p id="lightboxSoftware" class="text-sm text-slate-200">Photoshop, Blender</p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Description</h4>
+                        <p id="lightboxDesc" class="text-sm text-slate-300 leading-relaxed">
+                            Full description of the artwork creation process.
+                        </p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Tags</h4>
+                        <div id="lightboxTags" class="flex flex-wrap gap-1.5">
+                            <!-- Tags injected -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6 mt-6 border-t border-slate-800 flex justify-between items-center text-xs text-slate-500">
+                    <span>High Resolution Render</span>
+                    <button onclick="closeLightbox()" class="text-indigo-400 hover:text-indigo-300 font-medium">Back to Gallery</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
-</main>
 
-<!-- Footer -->
-<footer class="container">
-  <span>© <span id="year">2026</span> [Your Name]</span>
-  <span>Designed with purpose.</span>
-</footer>
+    <!-- ADD ARTWORK MODAL -->
+    <div id="addModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="relative max-w-lg w-full glass-panel rounded-3xl border border-slate-700 p-6 sm:p-8 my-8 bg-slate-900">
+            <button onclick="closeAddModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
 
-<script>
-document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+            <h3 class="text-xl font-bold mb-1">Add New Artwork</h3>
+            <p class="text-xs text-slate-400 mb-6">Dynamically add a piece to your current session gallery.</p>
 
+            <form onsubmit="handleAddArtwork(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Artwork Title</label>
+                    <input type="text" id="addTitle" required placeholder="e.g. Cyberpunk Alleyway" class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Category</label>
+                    <select id="addCategory" required class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+                        <option value="Background">Background</option>
+                        <option value="Characters">Characters</option>
+                        <option value="Symbols">Symbols</option>
+                        <option value="UI">UI</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Image URL (Unsplash or direct link)</label>
+                    <input type="url" id="addImgUrl" required placeholder="https://images.unsplash.com/..." class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">Software Used</label>
+                        <input type="text" id="addSoftware" placeholder="Blender, Photoshop" class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">Tags (Comma separated)</label>
+                        <input type="text" id="addTags" placeholder="Sci-Fi, Neon, 3D" class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Description</label>
+                    <textarea id="addDesc" rows="3" placeholder="Briefly describe your art concept..." class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500"></textarea>
+                </div>
+
+                <div class="pt-2 flex justify-end space-x-3">
+                    <button type="button" onclick="closeAddModal()" class="px-4 py-2 rounded-xl text-xs font-medium text-slate-400 hover:text-white">Cancel</button>
+                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm shadow-md">Add to Gallery</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- GITHUB PAGES HOSTING GUIDE MODAL -->
+    <div id="githubModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="relative max-w-2xl w-full glass-panel rounded-3xl border border-slate-700 p-6 sm:p-8 my-8 bg-slate-900 max-h-[85vh] overflow-y-auto">
+            <button onclick="closeGithubModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="flex items-center space-x-3 mb-4">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl">
+                    <i class="fa-brands fa-github"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold">Host Free on GitHub Pages</h3>
+                    <p class="text-xs text-slate-400">Step-by-step guide to publish your art portfolio website live in 3 minutes.</p>
+                </div>
+            </div>
+
+            <div class="space-y-6 text-sm text-slate-300">
+                <!-- Step 1 -->
+                <div class="flex items-start space-x-4 p-4 rounded-2xl bg-slate-800/50 border border-slate-700/50">
+                    <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center shrink-0 text-xs">1</span>
+                    <div class="space-y-1">
+                        <h4 class="font-semibold text-white">Create GitHub Repository</h4>
+                        <p class="text-xs text-slate-400">Go to GitHub.com, create a new repository (e.g. <code class="bg-black/50 px-1.5 py-0.5 rounded text-amber-300">art-portfolio</code>), set it to <strong>Public</strong>, and check "Add a README file".</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex items-start space-x-4 p-4 rounded-2xl bg-slate-800/50 border border-slate-700/50">
+                    <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center shrink-0 text-xs">2</span>
+                    <div class="space-y-1">
+                        <h4 class="font-semibold text-white">Save File as index.html</h4>
+                        <p class="text-xs text-slate-400">Save this webpage file as <code class="bg-black/50 px-1.5 py-0.5 rounded text-amber-300">index.html</code> on your computer.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex items-start space-x-4 p-4 rounded-2xl bg-slate-800/50 border border-slate-700/50">
+                    <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center shrink-0 text-xs">3</span>
+                    <div class="space-y-1">
+                        <h4 class="font-semibold text-white">Upload index.html to Repository</h4>
+                        <p class="text-xs text-slate-400">In your GitHub repo page, click <strong>Add file</strong> → <strong>Upload files</strong>, drag your <code class="bg-black/50 px-1.5 py-0.5 rounded text-amber-300">index.html</code>, and click <strong>Commit changes</strong>.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="flex items-start space-x-4 p-4 rounded-2xl bg-slate-800/50 border border-slate-700/50">
+                    <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center shrink-0 text-xs">4</span>
+                    <div class="space-y-1">
+                        <h4 class="font-semibold text-white">Enable GitHub Pages</h4>
+                        <p class="text-xs text-slate-400">Go to Repo <strong>Settings</strong> → <strong>Pages</strong> (on left sidebar). Under <em>Branch</em>, select <code class="bg-black/50 px-1.5 py-0.5 rounded text-amber-300">main</code> (or <code class="bg-black/50 px-1.5 py-0.5 rounded text-amber-300">master</code>) branch and click <strong>Save</strong>.</p>
+                    </div>
+                </div>
+
+                <!-- Live link notice -->
+                <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs flex items-center space-x-3">
+                    <i class="fa-solid fa-globe text-lg shrink-0"></i>
+                    <span>Your portfolio will be live at: <code class="font-mono text-white">https://&lt;your-username&gt;.github.io/&lt;repo-name&gt;/</code></span>
+                </div>
+            </div>
+
+            <div class="mt-6 text-right">
+                <button onclick="closeGithubModal()" class="px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-medium text-xs">Got it!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Data & Logic -->
+    <script>
+        // Initial Sample Artworks Data (Pre-populated across 4 categories)
+        let artworkData = [
+            // BACKGROUNDS
+            {
+                id: 1,
+                title: "Neon Cyber Metropolis",
+                category: "Background",
+                imgUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop",
+                software: "Blender, Photoshop",
+                date: "Sep 2026",
+                tags: ["Sci-Fi", "Environment", "Cyberpunk", "3D"],
+                description: "Futuristic city landscape study focusing on volumetric neon lighting, reflective damp streets, and towering megastructures."
+            },
+            {
+                id: 2,
+                title: "Celestial Floating Islands",
+                category: "Background",
+                imgUrl: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1000&auto=format&fit=crop",
+                software: "Procreate, Photoshop",
+                date: "Aug 2026",
+                tags: ["Fantasy", "Landscape", "Clouds", "Concept"],
+                description: "Ethereal fantasy environment art exploring floating landmasses with cascading waterfalls and surreal sunset gradients."
+            },
+            {
+                id: 3,
+                title: "Solitude Mountain Observatory",
+                category: "Background",
+                imgUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000&auto=format&fit=crop",
+                software: "Unreal Engine, Photoshop",
+                date: "Jul 2026",
+                tags: ["Nature", "Stars", "Space", "Atmospheric"],
+                description: "Deep night sky concept art featuring an isolated astronomical dome perched on a snowy mountain ridge under the Aurora Borealis."
+            },
+
+            // CHARACTERS
+            {
+                id: 4,
+                title: "Cyber Warrior V-9",
+                category: "Characters",
+                imgUrl: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1000&auto=format&fit=crop",
+                software: "Photoshop, ZBrush",
+                date: "Oct 2026",
+                tags: ["Mecha", "Character Design", "Sci-Fi", "Armor"],
+                description: "Futuristic mercenary character design featuring modular exosuit plating, energy visor, and custom weapon accessories."
+            },
+            {
+                id: 5,
+                title: "Astral Forest Guardian",
+                category: "Characters",
+                imgUrl: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1000&auto=format&fit=crop",
+                software: "Procreate",
+                date: "Aug 2026",
+                tags: ["Fantasy", "Creature", "Spirits", "Mythology"],
+                description: "Mystical spirit entity design based on ancient woodland lore, detailed with bioluminescent antlers and ethereal cloak patterns."
+            },
+            {
+                id: 6,
+                title: "Neon Ronin Concept",
+                category: "Characters",
+                imgUrl: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1000&auto=format&fit=crop",
+                software: "Clip Studio Paint, Photoshop",
+                date: "May 2026",
+                tags: ["Samurai", "Cyberpunk", "Lineart", "Portrait"],
+                description: "Modernized futuristic samurai featuring LED katana lighting, urban tactical wear, and stylized cell-shading finish."
+            },
+
+            // SYMBOLS
+            {
+                id: 7,
+                title: "Arcane Guild Crest",
+                category: "Symbols",
+                imgUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop",
+                software: "Illustrator, Photoshop",
+                date: "Sep 2026",
+                tags: ["Vector", "Icon", "Emblem", "Fantasy"],
+                description: "Vector shield insignia designed for a dark fantasy RPG guild. Vector linework rendered with metallic gold gradient overlays."
+            },
+            {
+                id: 8,
+                title: "Cybernetic Faction Sigil",
+                category: "Symbols",
+                imgUrl: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop",
+                software: "Illustrator",
+                date: "Jun 2026",
+                tags: ["Logo", "Minimal", "Sci-Fi", "Vector"],
+                description: "Geometric tech faction mark suitable for game UI branding, HUD displays, and futuristic faction flags."
+            },
+            {
+                id: 9,
+                title: "Runic Elemental Runes",
+                category: "Symbols",
+                imgUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop",
+                software: "Illustrator, Procreate",
+                date: "Apr 2026",
+                tags: ["Glyphs", "Runes", "Game Art", "Magic"],
+                description: "A set of glowing elemental rune glyphs (Fire, Water, Arcane, Void) designed for spellcasting inventory UI."
+            },
+
+            // UI'S
+            {
+                id: 10,
+                title: "Sci-Fi HUD & Tactical Interface",
+                category: "UI",
+                imgUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop",
+                software: "Figma, Illustrator",
+                date: "Oct 2026",
+                tags: ["UI/UX", "HUD", "Game UI", "Dashboard"],
+                description: "Diegetic heads-up display dashboard for space simulation combat games, featuring health radar, ammunition counters, and star maps."
+            },
+            {
+                id: 11,
+                title: "RPG Inventory & Crafting Screen",
+                category: "UI",
+                imgUrl: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1000&auto=format&fit=crop",
+                software: "Figma, Photoshop",
+                date: "Aug 2026",
+                tags: ["Mobile UI", "Game UI", "Inventory", "Dark Theme"],
+                description: "Clean dark glassmorphic inventory grid interface designed for cross-platform fantasy action RPGs."
+            },
+            {
+                id: 12,
+                title: "Cyberpunk Main Menu Concept",
+                category: "UI",
+                imgUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop",
+                software: "Figma, After Effects",
+                date: "Jul 2026",
+                tags: ["Menu UI", "Glitch", "Typography", "Cyberpunk"],
+                description: "Interactive main menu screen layout with dynamic glitch effects, button hover states, and audio visualizer bar integration."
+            }
+        ];
+
+        let currentFilter = 'all';
+
+        // Render Gallery Cards
+        function renderGallery() {
+            const grid = document.getElementById('artGrid');
+            const emptyState = document.getElementById('emptyState');
+            grid.innerHTML = '';
+
+            const filteredData = currentFilter === 'all'
+                ? artworkData
+                : artworkData.filter(item => item.category === currentFilter);
+
+            document.getElementById('statTotalArt').textContent = artworkData.length;
+
+            if (filteredData.length === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+               
+                filteredData.forEach(art => {
+                    const card = document.createElement('div');
+                    card.className = "group relative rounded-2xl overflow-hidden glass-panel border border-slate-800 light:border-slate-300 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-indigo-500/10 cursor-pointer flex flex-col";
+                    card.onclick = () => openLightbox(art.id);
+
+                    // Category Color Mapping
+                    let categoryColor = "bg-indigo-500/20 text-indigo-400 border-indigo-500/30";
+                    if (art.category === 'Background') categoryColor = "bg-cyan-500/20 text-cyan-400 border-cyan-500/30";
+                    if (art.category === 'Characters') categoryColor = "bg-purple-500/20 text-purple-400 border-purple-500/30";
+                    if (art.category === 'Symbols') categoryColor = "bg-amber-500/20 text-amber-400 border-amber-500/30";
+                    if (art.category === 'UI') categoryColor = "bg-emerald-500/20 text-emerald-400 border-emerald-500/30";
+
+                    card.innerHTML = `
+                        <div class="relative aspect-[4/3] w-full overflow-hidden bg-slate-900">
+                            <img src="${art.imgUrl}" alt="${art.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                            <div class="art-card-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <div class="w-full flex justify-between items-center text-xs text-white">
+                                    <span class="font-medium"><i class="fa-solid fa-eye mr-1"></i> View Details</span>
+                                    <span>${art.date}</span>
+                                </div>
+                            </div>
+                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border backdrop-blur-md ${categoryColor}">
+                                ${art.category}
+                            </span>
+                        </div>
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-bold text-base text-slate-100 light:text-slate-900 group-hover:text-indigo-400 transition-colors line-clamp-1">${art.title}</h3>
+                                <p class="text-xs text-slate-400 light:text-slate-600 mt-1 line-clamp-2">${art.description}</p>
+                            </div>
+                            <div class="mt-3 pt-3 border-t border-slate-800/60 light:border-slate-200 flex flex-wrap gap-1">
+                                ${art.tags.slice(0, 3).map(tag => `<span class="text-[10px] px-2 py-0.5 rounded-md bg-slate-800 light:bg-slate-200 text-slate-400 light:text-slate-700">#${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+        }
+
+        // Filter Functionality
+        function filterGallery(category) {
+            currentFilter = category;
+           
+            // Update Tab UI
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-category') === category) {
+                    btn.className = "filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-indigo-600 text-white shadow-md";
+                } else {
+                    btn.className = "filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-400 hover:text-white transition-all";
+                }
+            });
+
+            renderGallery();
+        }
+
+        // Lightbox Functions
+        function openLightbox(id) {
+            const art = artworkData.find(item => item.id === id);
+            if (!art) return;
+
+            document.getElementById('lightboxImg').src = art.imgUrl;
+            document.getElementById('lightboxTitle').textContent = art.title;
+            document.getElementById('lightboxCategory').textContent = art.category;
+            document.getElementById('lightboxDate').textContent = art.date;
+            document.getElementById('lightboxSoftware').textContent = art.software || 'Digital Media';
+            document.getElementById('lightboxDesc').textContent = art.description;
+
+            const tagsContainer = document.getElementById('lightboxTags');
+            tagsContainer.innerHTML = art.tags.map(tag => `<span class="text-xs px-2.5 py-1 rounded-lg bg-slate-800 text-indigo-300">#${tag}</span>`).join('');
+
+            document.getElementById('lightboxModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Add Artwork Functions
+        function openAddModal() {
+            document.getElementById('addModal').classList.remove('hidden');
+        }
+
+        function closeAddModal() {
+            document.getElementById('addModal').classList.add('hidden');
+        }
+
+        function handleAddArtwork(e) {
+            e.preventDefault();
+            const title = document.getElementById('addTitle').value;
+            const category = document.getElementById('addCategory').value;
+            const imgUrl = document.getElementById('addImgUrl').value;
+            const software = document.getElementById('addSoftware').value || 'Photoshop';
+            const tagsInput = document.getElementById('addTags').value;
+            const desc = document.getElementById('addDesc').value;
+
+            const tags = tagsInput ? tagsInput.split(',').map(t => t.trim()) : ['Art', 'Digital'];
+
+            const newArt = {
+                id: Date.now(),
+                title,
+                category,
+                imgUrl,
+                software,
+                date: "Oct 2026",
+                tags,
+                description: desc || "New digital artwork piece added."
+            };
+
+            artworkData.unshift(newArt);
+            renderGallery();
+            closeAddModal();
+           
+            // Reset form
+            e.target.reset();
+        }
+
+        // GitHub Modal
+        function openGithubModal() {
+            document.getElementById('githubModal').classList.remove('hidden');
+        }
+
+        function closeGithubModal() {
+            document.getElementById('githubModal').classList.add('hidden');
+        }
+
+        // Contact Form
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const toast = document.getElementById('contactToast');
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                e.target.reset();
+            }, 3000);
+        }
+
+        // Theme Switcher
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Initialize on Load
+        window.onload = function() {
+            renderGallery();
+        };
+    </script>
 </body>
 </html>
