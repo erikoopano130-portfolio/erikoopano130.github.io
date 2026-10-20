@@ -1,843 +1,498 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ERIKO | Digital Art & UI Portfolio</title>
-    <!-- Tailwind CSS -->
+    <title>Eriko Paulo Opano | 2D Illustrator & Digital Concept Artist</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0f3ff',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            900: '#312e81',
-                        },
-                        cyanAccent: '#06b6d4',
-                        amberAccent: '#f59e0b',
-                        darkBg: '#0b0f17',
-                        darkCard: '#151c28',
-                        darkBorder: '#1e293b'
-                    },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
                 }
             }
         }
     </script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.3s, color 0.3s;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
         }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0b0f17;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-        /* Glassmorphism styling */
-        .glass-panel {
-            background: rgba(21, 28, 40, 0.7);
+
+        .glass-card {
+            background: rgba(18, 18, 18, 0.7);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
-        .light .glass-panel {
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(0, 0, 0, 0.08);
+
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .art-card-overlay {
-            background: linear-gradient(0deg, rgba(11,15,23,0.95) 0%, rgba(11,15,23,0.4) 60%, rgba(0,0,0,0) 100%);
+
+        /* Custom Black & White Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
         }
-        .light .art-card-overlay {
-            background: linear-gradient(0deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.4) 60%, rgba(255,255,255,0) 100%);
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #404040;
+        }
+
+        /* Clean full color artwork image presentation */
+        .art-img {
+            transition: transform 0.5s ease;
+        }
+        .art-img:hover {
+            transform: scale(1.05);
         }
     </style>
 </head>
-<body class="bg-darkBg text-slate-100 dark:bg-darkBg dark:text-slate-100 transition-colors duration-300">
+<body class="min-h-screen flex flex-col overflow-x-hidden antialiased selection:bg-white selection:text-black">
 
-    <!-- Header / Navbar -->
-    <header class="fixed top-0 left-0 right-0 z-40 glass-panel border-b border-slate-800/50 light:border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Logo -->
-            <a href="#" class="flex items-center space-x-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-cyanAccent to-amberAccent flex items-center justify-center text-white font-black text-xl shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300">
-                    E
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-neutral-800 px-4 sm:px-8 py-3.5 transition-all">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-white text-black flex items-center justify-center font-extrabold shadow-lg shadow-white/10 group-hover:scale-105 transition-transform">
+                    <i data-lucide="palette" class="w-5 h-5 text-black"></i>
                 </div>
-                <div>
-                    <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent light:from-slate-900 light:to-indigo-600">ERIKO</span>
-                    <span class="block text-[10px] tracking-widest text-indigo-400 font-semibold uppercase -mt-1">2D GAME ARTIST</span>
-                </div>
+                <span class="text-lg font-bold text-white tracking-wide">
+                    Eriko Paulo Opano
+                </span>
             </a>
 
-            <!-- Desktop Nav Links -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="#hero" class="hover:text-indigo-400 transition-colors">Home</a>
-                <a href="#gallery" class="hover:text-indigo-400 transition-colors">Gallery</a>
-                <a href="#skills" class="hover:text-indigo-400 transition-colors">Skills</a>
-                <a href="#contact" class="hover:text-indigo-400 transition-colors">Contact</a>
-                
-            </nav>
+            <div class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider text-neutral-400">
+                <a href="#hero" class="hover:text-white transition-colors">Home</a>
+                <a href="#gallery" class="hover:text-white transition-colors">Portfolio</a>
+                <a href="#artist-contact" class="hover:text-white transition-colors">About & Contact</a>
+            </div>
 
-            <!-- Actions -->
-            <div class="flex items-center space-x-3">
-                <!-- Theme Toggle -->
-                <button id="themeToggle" onclick="toggleTheme()" class="p-2.5 rounded-xl bg-slate-800/80 light:bg-slate-200 text-slate-300 light:text-slate-700 hover:text-indigo-400 transition-colors" title="Toggle Theme">
-                    <i class="fa-solid fa-moon text-lg dark:block hidden"></i>
-                    <i class="fa-solid fa-sun text-lg dark:hidden block text-amber-500"></i>
-                </button>
-
-                <!-- Mobile Menu Button -->
-                <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-xl bg-slate-800/80 light:bg-slate-200 text-slate-300 light:text-slate-700">
-                    <i class="fa-solid fa-bars text-lg"></i>
-                </button>
+            <div class="flex items-center gap-3">
+                <a href="#artist-contact" class="px-4 py-2 rounded-xl bg-white hover:bg-neutral-200 text-black font-semibold text-xs transition-colors shadow-lg shadow-white/10">
+                    Commission Me
+                </a>
             </div>
         </div>
+    </nav>
 
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobileMenu" class="hidden md:hidden glass-panel border-t border-slate-800 px-4 pt-3 pb-6 space-y-3">
-            <a href="#hero" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white">Home</a>
-            <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white">Gallery</a>
-            <a href="#skills" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white">Skills</a>
-            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-white">Contact</a>
+    <!-- 2D ARTIST PORTFOLIO HERO SECTION -->
+    <header id="hero" class="relative min-h-[85vh] flex flex-col justify-center items-center pt-28 pb-16 px-4 overflow-hidden border-b border-neutral-800">
         
+        <!-- Fixed Atmospheric Hero Background Art in Color -->
+        <div class="absolute inset-0 bg-cover bg-center z-0 opacity-40 scale-105" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');"></div>
+
+        <!-- Overlay Mask -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black z-10"></div>
+
+        <!-- Hero Content Container -->
+        <div class="relative z-20 max-w-4xl mx-auto text-center flex flex-col items-center">
+            
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-900 text-neutral-300 border border-neutral-700 text-xs font-semibold mb-6 shadow-xl backdrop-blur-md">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-white"></i>
+                <span>2D Digital Illustrator & Concept Artist</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-tight max-w-3xl mb-6">
+                Crafting Monochrome Worlds & Visual <span class="underline decoration-neutral-500 underline-offset-8">Narratives</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-neutral-400 max-w-2xl font-normal leading-relaxed mb-8">
+                Welcome to my online art gallery. I create character concepts, environmental illustrations, and expressive 2D visual artwork focusing on form, value, contrast, and depth.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <a href="#gallery" class="px-6 py-3 rounded-xl bg-white hover:bg-neutral-200 text-black font-semibold text-sm flex items-center gap-2 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-white/10">
+                    <i data-lucide="grid" class="w-4 h-4"></i>
+                    Explore Portfolio
+                </a>
+                <a href="#artist-contact" class="px-6 py-3 rounded-xl glass-card hover:bg-neutral-900 text-white font-medium text-sm flex items-center gap-2 transition-all border border-neutral-700">
+                    <i data-lucide="user" class="w-4 h-4 text-neutral-300"></i>
+                    About Artist
+                </a>
+            </div>
+
         </div>
     </header>
 
-    <main class="pt-24">
-        <!-- Hero Section -->
-        <section id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 flex flex-col md:flex-row items-center gap-12 overflow-hidden">
-            <!-- Background Glow FX -->
-            <div class="absolute -top-40 -left-40 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute -bottom-40 right-0 w-96 h-96 bg-cyanAccent/10 rounded-full blur-3xl pointer-events-none"></div>
-
-            <!-- Left Content -->
-            <div class="flex-1 space-y-6 text-center md:text-left z-10">
-                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider">
-                    <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
-                    <span>2D Game Artist - Specialist</span>
-                </div>
-                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
-                    Crafting Visuals Beyond <span class="bg-gradient-to-r from-indigo-400 via-cyanAccent to-amber-400 bg-clip-text text-transparent">Boundaries</span>.
-                </h1>
-                <p class="text-slate-400 light:text-slate-600 text-base sm:text-lg max-w-2xl leading-relaxed">
-                    Welcome to my digital gallery. I am 2D artist and illustrator specializing in character design, atmospheric environmental design, and game asset illustrations.
-                </p>
-               
-                <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
-                    <a href="#gallery" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white font-medium shadow-lg shadow-indigo-600/30 hover:shadow-indigo-500/50 transition-all flex items-center space-x-2">
-                        <span>Explore Gallery</span>
-                        <i class="fa-solid fa-arrow-right text-xs"></i>
-                    </a>
-                   
-                </div>
-
-                <!-- Stats Bar -->
-                <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800/80 light:border-slate-300/80 max-w-md mx-auto md:mx-0">
-                    <div>
-                        <div class="text-2xl font-bold text-white light:text-slate-900" id="statTotalArt">12</div>
-                        <div class="text-xs text-slate-400">Total Artworks</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-cyanAccent">4</div>
-                        <div class="text-xs text-slate-400">Categories</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-amberAccent">6+</div>
-                        <div class="text-xs text-slate-400">Years Exp.</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Featured Art Spotlight -->
-            <div class="flex-1 w-full max-w-md md:max-w-none relative z-10">
-                <div class="relative group rounded-3xl overflow-hidden glass-panel p-3 border border-slate-700/50 shadow-2xl transition-transform duration-500 hover:-translate-y-2">
-                    <div class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-900">
-                        <img id="heroFeaturedImg" src="three-dragon.jpg" alt="Three Dragon Featured Artwork" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80"></div>
-                        <div class="absolute top-4 left-4">
-                            <span class="px-3 py-1 rounded-full bg-indigo-600/90 text-white text-xs font-semibold uppercase tracking-wider backdrop-blur-md">
-                                Featured Piece
-                            </span>
-                        </div>
-                        <div class="absolute bottom-4 left-4 right-4 text-left">
-                            <h3 class="text-xl font-bold text-white mb-1" id="heroFeaturedTitle">Bag of Treasures Background</h3>
-                            <p class="text-xs text-indigo-300 flex items-center gap-2">
-                                <span>Background</span> • <span>Photoshop</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Gallery Section -->
-        <section id="gallery" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+    <!-- PORTFOLIO GALLERY SECTION -->
+    <section id="gallery" class="relative z-20 py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header & Filter Tabs -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
                 <div>
-                    <h2 class="text-3xl font-bold tracking-tight">Art Gallery</h2>
-                    <p class="text-slate-400 light:text-slate-600 text-sm mt-1">Browse categorized digital assets and concept designs</p>
+                    <h2 class="text-3xl font-bold text-white tracking-tight">Art Portfolio</h2>
+                    <p class="text-neutral-400 text-sm mt-1">Browse 2D artwork, character designs, and monochrome digital paintings.</p>
                 </div>
 
-                <!-- Filter Nav Tabs -->
-                <div class="flex flex-wrap gap-2 bg-slate-900/80 light:bg-slate-200 p-1.5 rounded-2xl border border-slate-800 light:border-slate-300">
-                    <button onclick="filterGallery('all')" class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-indigo-600 text-white shadow-md" data-category="all">
-                        All Works
-                    </button>
-                    <button onclick="filterGallery('Background')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-400 hover:text-white transition-all" data-category="Background">
-                        <i class="fa-solid fa-mountain-sun mr-1"></i> Backgrounds
-                    </button>
-                    <button onclick="filterGallery('Characters')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-400 hover:text-white transition-all" data-category="Characters">
-                        <i class="fa-solid fa-user-ninja mr-1"></i> Characters
-                    </button>
-                    <button onclick="filterGallery('Symbols')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-400 hover:text-white transition-all" data-category="Symbols">
-                        <i class="fa-solid fa-shield-halved mr-1"></i> Symbols
-                    </button>
-                    <button onclick="filterGallery('UI')" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-400 hover:text-white transition-all" data-category="UI">
-                        <i class="fa-solid fa-layer-group mr-1"></i> UIs
-                    </button>
+                <!-- Category Filters -->
+                <div id="filter-buttons" class="flex flex-wrap gap-2 p-1.5 bg-neutral-950 rounded-xl border border-neutral-800">
+                    <button data-category="all" class="filter-btn active px-4 py-2 rounded-lg text-xs font-semibold transition-all bg-white text-black shadow-md">All Artwork</button>
+                    <button data-category="characters" class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold text-neutral-400 hover:text-white transition-all">Characters</button>
+                    <button data-category="environments" class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold text-neutral-400 hover:text-white transition-all">Environments</button>
+                    <button data-category="illustrations" class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold text-neutral-400 hover:text-white transition-all">Illustrations</button>
+                    <button data-category="sketches" class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold text-neutral-400 hover:text-white transition-all">Concepts & Sketches</button>
                 </div>
             </div>
 
-            <!-- Art Cards Grid -->
-            <div id="artGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Art Cards dynamically injected here by JS -->
+            <!-- Gallery Grid -->
+            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Gallery Cards rendered dynamically via JS -->
             </div>
-           
-            <!-- Empty State -->
-            <div id="emptyState" class="hidden text-center py-20 bg-slate-900/30 rounded-3xl border border-dashed border-slate-800">
-                <i class="fa-regular fa-image text-4xl text-slate-600 mb-3"></i>
-                <h3 class="text-lg font-semibold text-slate-300">No artwork found</h3>
-                <p class="text-sm text-slate-500">Try changing the category filter or add a new artwork piece.</p>
+
+            <!-- Empty State Notice -->
+            <div id="empty-state" class="hidden text-center py-16">
+                <i data-lucide="image-off" class="w-12 h-12 text-neutral-600 mx-auto mb-3"></i>
+                <p class="text-neutral-400 text-base">No artwork found in this category.</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- About & Software / Skills Section -->
-        <section id="skills" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="glass-panel rounded-3xl p-8 sm:p-12 border border-slate-800 light:border-slate-300 relative overflow-hidden">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <span class="text-indigo-400 text-xs font-semibold uppercase tracking-wider">Toolbox & Expertise</span>
-                        <h2 class="text-3xl font-bold mt-2 mb-4">Mastered Digital Software</h2>
-                        <p class="text-slate-400 light:text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
-                            Bringing imaginative realms to life using industry-standard digital tools. From high-poly 3D environment drafting to vector iconography and game user interfaces.
-                        </p>
-
-                        <!-- Software Grid -->
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                            <div class="p-3.5 rounded-2xl bg-slate-800/50 light:bg-slate-100 border border-slate-700/50 light:border-slate-200 flex items-center space-x-3">
-                                <i class="fa-solid fa-paintbrush text-indigo-400 text-xl"></i>
-                                <div>
-                                    <h4 class="text-sm font-semibold text-slate-200 light:text-slate-800">Photoshop</h4>
-                                   
-                                </div>
-                            </div>
-                            <div class="p-3.5 rounded-2xl bg-slate-800/50 light:bg-slate-100 border border-slate-700/50 light:border-slate-200 flex items-center space-x-3">
-                                <i class="fa-solid fa-paintbrush text-amber-400 text-xl"></i>
-                                <div>
-                                    <h4 class="text-sm font-semibold text-slate-200 light:text-slate-800">Kritar</h4>
-                                   
-                                </div>
-                            </div>
-                            <div class="p-3.5 rounded-2xl bg-slate-800/50 light:bg-slate-100 border border-slate-700/50 light:border-slate-200 flex items-center space-x-3">
-                                <i class="fa-brands fa-figma text-pink-400 text-xl"></i>
-                                <div>
-                                    <h4 class="text-sm font-semibold text-slate-200 light:text-slate-800">Figma</h4>
-                                    
-                                </div>
-                            </div>
-                            <div class="p-3.5 rounded-2xl bg-slate-800/50 light:bg-slate-100 border border-slate-700/50 light:border-slate-200 flex items-center space-x-3">
-                                <i class="fa-solid fa-pen-nib text-orange-400 text-xl"></i>
-                                <div>
-                                    <h4 class="text-sm font-semibold text-slate-200 light:text-slate-800">Illustrator</h4>
-                                    
-                                </div>
-                            </div>
-                            <div class="p-3.5 rounded-2xl bg-slate-800/50 light:bg-slate-100 border border-slate-700/50 light:border-slate-200 flex items-center space-x-3">
-                                <i class="fa-solid fa-wand-magic-sparkles text-cyanAccent text-xl"></i>
-                                <div>
-                                    <h4 class="text-sm font-semibold text-slate-200 light:text-slate-800">Procreate</h4>
-                                    
-                                </div>
-                            </div>
-                            <div class="p-3.5 rounded-2xl bg-slate-800/50 light:bg-slate-100 border border-slate-700/50 light:border-slate-200 flex items-center space-x-3">
-                                <i class="fa-solid fa-gamepad text-emerald-400 text-xl"></i>
-                                <div>
-                                    <h4 class="text-sm font-semibold text-slate-200 light:text-slate-800">Unity</h4>
-                                    
-                                </div>
-                            </div>
-                        </div>
+    <!-- ABOUT THE ARTIST & CONTACT SECTION -->
+    <section id="artist-contact" class="py-20 bg-neutral-950 border-t border-neutral-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- About the Artist -->
+                <div class="lg:col-span-7 flex flex-col justify-center">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 text-white text-xs font-semibold mb-4 w-fit border border-neutral-700">
+                        <i data-lucide="user" class="w-3.5 h-3.5 text-neutral-300"></i>
+                        Meet the Creator
                     </div>
-
-                    <!-- Process Card -->
-                    <div class="p-6 sm:p-8 rounded-2xl bg-slate-900/80 light:bg-white border border-slate-800 light:border-slate-200 space-y-4">
-                        <h3 class="text-lg font-bold flex items-center gap-2">
-                            <i class="fa-solid fa-palette text-indigo-400"></i>
-                            <span>About Me</span>
-                        </h3>
-                        <div class="space-y-3 text-xs sm:text-sm text-slate-300 light:text-slate-600 leading-relaxed">
-                            <p>
-                                Hi, I'm <strong class="text-white light:text-slate-900">Eriko</strong> — a passionate 2D Game Artist and Illutrator with over 6 years of industry experience specializing in slot games, and immersive digital environments.
-                            </p>
-                            <p>
-                                I'm currently working as a Specialist 2D Game Artist at Empire Shared Services Philippines, Inc., where my expertise spans the entire visual production pipeline: from initial concept sketches and mood boards to final rendered background assets, character art, symbol design, and game UI components. I thrive on collaborating with game producers and developers to transform creative ideas into stunning visual experiences.
-                            </p>
-                            <div class="pt-2 flex flex-wrap gap-2 text-[11px]">
-                                <span class="px-2.5 py-1 rounded-md bg-indigo-500/10 border border-indigo-500/20 text-indigo-300">2D Concept Art</span>
-                                <span class="px-2.5 py-1 rounded-md bg-indigo-500/10 border border-indigo-500/20 text-indigo-300">Slot & Casino Art</span>
-                                <span class="px-2.5 py-1 rounded-md bg-indigo-500/10 border border-indigo-500/20 text-indigo-300">Game UI/UX</span>
-                                <span class="px-2.5 py-1 rounded-md bg-indigo-500/10 border border-indigo-500/20 text-indigo-300">Symbol & Icon Design</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-slate-800 light:border-slate-300">
-                <div class="max-w-3xl mx-auto text-center space-y-4 mb-10">
-                    <span class="text-indigo-400 text-xs font-semibold uppercase tracking-wider">Get in Touch</span>
-                    <h2 class="text-3xl sm:text-4xl font-bold">Let's Work Together</h2>
-                    <p class="text-slate-400 light:text-slate-600 text-sm sm:text-base leading-relaxed">
-                        I'm always down for creative conversations and exciting new opportunities.
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-6">About the Artist</h2>
+                    <p class="text-neutral-300 text-base leading-relaxed mb-4">
+                        Hello! I am <strong class="text-white font-semibold">Eriko Paulo Opano</strong>, a 2D illustrator and digital visual artist specializing in high-contrast character design, dark fantasy environments, and atmospheric concept art.
                     </p>
+                    <p class="text-neutral-400 text-sm leading-relaxed mb-6">
+                        Over the past decade, I've worked with game studios, publishers, and private clients worldwide to craft compelling visual stories. My work emphasizes sharp values, expressive silhouettes, and strong composition to evoke emotion without needing relying on high chromatic complexity.
+                    </p>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-neutral-800">
+                        <div>
+                            <span class="block text-2xl font-bold text-white">10+</span>
+                            <span class="text-xs text-neutral-500 uppercase tracking-wider font-semibold">Years Experience</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold text-white">250+</span>
+                            <span class="text-xs text-neutral-500 uppercase tracking-wider font-semibold">Projects Completed</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold text-white">Global</span>
+                            <span class="text-xs text-neutral-500 uppercase tracking-wider font-semibold">Commissions</span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Direct Contact Cards Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
-                    <!-- Email Card -->
-                    <a href="mailto:eriko.artist@example.com" class="p-6 rounded-2xl bg-slate-900/80 light:bg-white border border-slate-800 light:border-slate-200 hover:border-indigo-500/50 transition-all group flex flex-col items-center text-center">
-                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Email</span>
-                        <span class="text-sm font-semibold text-slate-200 light:text-slate-800 mt-1 group-hover:text-indigo-400 transition-colors">eriko.artist@example.com</span>
-                    </a>
+                <!-- Contact Information & Socials -->
+                <div class="lg:col-span-5 glass-panel p-8 rounded-3xl border border-neutral-800 shadow-2xl bg-neutral-950">
+                    <h3 class="text-xl font-bold text-white mb-2">Get in Touch</h3>
+                    <p class="text-neutral-400 text-xs mb-6">For commissions, studio hire, or freelance inquiries.</p>
 
-                    <!-- Phone Card -->
-                    <a href="tel:+1234567890" class="p-6 rounded-2xl bg-slate-900/80 light:bg-white border border-slate-800 light:border-slate-200 hover:border-indigo-500/50 transition-all group flex flex-col items-center text-center">
-                        <div class="w-12 h-12 rounded-xl bg-cyanAccent/10 text-cyanAccent flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-phone"></i>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center gap-4 p-3 rounded-xl bg-neutral-900 border border-neutral-800">
+                            <div class="w-10 h-10 rounded-lg bg-white text-black flex items-center justify-center shrink-0 font-bold">
+                                <i data-lucide="phone" class="w-5 h-5 text-black"></i>
+                            </div>
+                            <div>
+                                <span class="text-[11px] text-neutral-500 uppercase tracking-wider block font-semibold">Contact Number</span>
+                                <a href="tel:+15550192834" class="text-sm font-medium text-neutral-200 hover:text-white transition-colors">+1 (555) 019-2834</a>
+                            </div>
                         </div>
-                        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Phone / WhatsApp</span>
-                        <span class="text-sm font-semibold text-slate-200 light:text-slate-800 mt-1 group-hover:text-cyanAccent transition-colors">+1 (555) 019-2834</span>
-                    </a>
-                </div>
 
-                <!-- Social Links Grid -->
-                <div class="pt-8 border-t border-slate-800/80 light:border-slate-200/80 text-center">
-                    <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">Connect on Social Platforms</h3>
-                    <div class="flex flex-wrap items-center justify-center gap-3">
-                        <a href="https://artstation.com" target="_blank" class="px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-indigo-600 text-slate-300 hover:text-white text-xs font-medium flex items-center space-x-2 transition-all">
-                            <i class="fa-brands fa-artstation text-base"></i>
-                            <span>ArtStation</span>
+                        <div class="flex items-center gap-4 p-3 rounded-xl bg-neutral-900 border border-neutral-800">
+                            <div class="w-10 h-10 rounded-lg bg-white text-black flex items-center justify-center shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5 text-black"></i>
+                            </div>
+                            <div>
+                                <span class="text-[11px] text-neutral-500 uppercase tracking-wider block font-semibold">Email Address</span>
+                                <a href="mailto:erikopaulo.opano@atmosphere-gallery.com" class="text-sm font-medium text-neutral-200 hover:text-white transition-colors truncate block max-w-[210px] sm:max-w-none">erikopaulo.opano@atmosphere-gallery.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-4">Follow Socials</h4>
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="#" class="flex items-center gap-3 p-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-300 hover:text-white transition-all">
+                            <i data-lucide="instagram" class="w-4 h-4 text-neutral-200"></i>
+                            <span class="text-xs font-medium">Instagram</span>
                         </a>
-                        <a href="https://behance.net" target="_blank" class="px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-indigo-600 text-slate-300 hover:text-white text-xs font-medium flex items-center space-x-2 transition-all">
-                            <i class="fa-brands fa-behance text-base"></i>
-                            <span>Behance</span>
+                        <a href="#" class="flex items-center gap-3 p-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-300 hover:text-white transition-all">
+                            <i data-lucide="globe" class="w-4 h-4 text-neutral-200"></i>
+                            <span class="text-xs font-medium">ArtStation</span>
                         </a>
-                        <a href="https://instagram.com" target="_blank" class="px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-indigo-600 text-slate-300 hover:text-white text-xs font-medium flex items-center space-x-2 transition-all">
-                            <i class="fa-brands fa-instagram text-base"></i>
-                            <span>Instagram</span>
+                        <a href="#" class="flex items-center gap-3 p-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-300 hover:text-white transition-all">
+                            <i data-lucide="twitter" class="w-4 h-4 text-neutral-200"></i>
+                            <span class="text-xs font-medium">X / Twitter</span>
                         </a>
-                        <a href="https://linkedin.com" target="_blank" class="px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-indigo-600 text-slate-300 hover:text-white text-xs font-medium flex items-center space-x-2 transition-all">
-                            <i class="fa-brands fa-linkedin text-base"></i>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://x.com" target="_blank" class="px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-indigo-600 text-slate-300 hover:text-white text-xs font-medium flex items-center space-x-2 transition-all">
-                            <i class="fa-brands fa-x-twitter text-base"></i>
-                            <span>X / Twitter</span>
+                        <a href="#" class="flex items-center gap-3 p-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-300 hover:text-white transition-all">
+                            <i data-lucide="linkedin" class="w-4 h-4 text-neutral-200"></i>
+                            <span class="text-xs font-medium">LinkedIn</span>
                         </a>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-slate-800 light:border-slate-300 py-8 text-center text-xs text-slate-500">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>© 2026 Aetheria Digital Art Portfolio. Designed for artists & developers.</p>
-            <button onclick="openGithubModal()" class="text-indigo-400 hover:text-indigo-300 flex items-center space-x-1.5">
-                <i class="fa-brands fa-github"></i>
-                <span>How to host this on GitHub Pages</span>
-            </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-neutral-900 py-8 px-4 text-center text-xs text-neutral-500">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 Eriko Paulo Opano 2D Art Portfolio. All rights reserved.</p>
+            <p class="flex items-center gap-1 text-neutral-400 font-medium">
+                Monochrome 2D Art Showcase
+            </p>
         </div>
     </footer>
 
-    <!-- LIGHTBOX MODAL -->
-    <div id="lightboxModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-        <div class="relative max-w-5xl w-full glass-panel rounded-3xl border border-slate-700 overflow-hidden my-auto flex flex-col lg:flex-row max-h-[90vh]">
-            <!-- Close Button -->
-            <button onclick="closeLightbox()" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-slate-900/80 hover:bg-slate-800 text-slate-300 flex items-center justify-center transition-colors">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-
-            <!-- Modal Image Container -->
-            <div class="flex-1 bg-black/60 flex items-center justify-center p-4 min-h-[300px] lg:min-h-[500px]">
-                <img id="lightboxImg" src="three-dragon.jpg" alt="Three Dragons Concept" class="max-h-[70vh] w-auto max-w-full object-contain rounded-xl shadow-2xl"
+    <!-- LIGHTBOX MODAL PREVIEW -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 sm:p-6">
+        <div class="relative w-full max-w-4xl glass-panel rounded-2xl overflow-hidden border border-neutral-800 shadow-2xl flex flex-col bg-black">
+            
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-neutral-800 bg-neutral-950">
+                <div>
+                    <h3 id="modal-title" class="text-base font-bold text-white">Artwork Preview</h3>
+                    <p id="modal-category" class="text-xs text-neutral-400 uppercase tracking-wider font-semibold">Category</p>
+                </div>
+                <button id="close-modal-btn" class="p-2 rounded-xl text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
             </div>
 
-            <!-- Modal Sidebar Info -->
-            <div class="w-full lg:w-96 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto border-t lg:border-t-0 lg:border-l border-slate-800 bg-slate-900/90">
-                <div class="space-y-4">
-                    <div class="flex items-center justify-between">
-                        <span id="lightboxCategory" class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">
-                            Category
-                        </span>
-                        <span id="lightboxDate" class="text-xs text-slate-400">Oct 2026</span>
-                    </div>
+            <!-- Modal Body -->
+            <div class="relative flex-1 bg-black overflow-hidden flex items-center justify-center p-4 min-h-[300px]">
+                <img id="modal-image" src="" alt="" class="max-h-[60vh] max-w-full object-contain rounded-lg shadow-xl">
+            </div>
 
-                    <h3 id="lightboxTitle" class="text-2xl font-bold text-white">Artwork Title</h3>
-
-                    <div class="space-y-2">
-                        <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Software Used</h4>
-                        <p id="lightboxSoftware" class="text-sm text-slate-200">Photoshop, Blender</p>
-                    </div>
-
-                    <div class="space-y-2">
-                        <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Description</h4>
-                        <p id="lightboxDesc" class="text-sm text-slate-300 leading-relaxed">
-                            Full description of the artwork creation process.
-                        </p>
-                    </div>
-
-                    <div class="space-y-2">
-                        <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Tags</h4>
-                        <div id="lightboxTags" class="flex flex-wrap gap-1.5">
-                            <!-- Tags injected -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pt-6 mt-6 border-t border-slate-800 flex justify-between items-center text-xs text-slate-500">
-                    <span>High Resolution Render</span>
-                    <button onclick="closeLightbox()" class="text-indigo-400 hover:text-indigo-300 font-medium">Back to Gallery</button>
-                </div>
+            <!-- Modal Footer Info -->
+            <div class="flex items-center justify-between px-6 py-4 border-t border-neutral-800 bg-neutral-950">
+                <span id="modal-author" class="text-xs text-neutral-400">Artwork by Eriko Paulo Opano</span>
+                <button id="modal-close-btn" class="px-4 py-2 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-medium transition-colors border border-neutral-700">
+                    Close Preview
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- ADD ARTWORK MODAL -->
-    <div id="addModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-        <div class="relative max-w-lg w-full glass-panel rounded-3xl border border-slate-700 p-6 sm:p-8 my-8 bg-slate-900">
-            <button onclick="closeAddModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-
-            <h3 class="text-xl font-bold mb-1">Add New Artwork</h3>
-            <p class="text-xs text-slate-400 mb-6">Dynamically add a piece to your current session gallery.</p>
-
-            <form onsubmit="handleAddArtwork(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-medium text-slate-300 mb-1">Artwork Title</label>
-                    <input type="text" id="addTitle" required placeholder="e.g. Cyberpunk Alleyway" class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-medium text-slate-300 mb-1">Category</label>
-                    <select id="addCategory" required class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
-                        <option value="Background">Background</option>
-                        <option value="Characters">Characters</option>
-                        <option value="Symbols">Symbols</option>
-                        <option value="UI">UI</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-medium text-slate-300 mb-1">Image URL (Unsplash or direct link)</label>
-                    <input type="url" id="addImgUrl" required placeholder="https://images.unsplash.com/..." class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-xs font-medium text-slate-300 mb-1">Software Used</label>
-                        <input type="text" id="addSoftware" placeholder="Blender, Photoshop" class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium text-slate-300 mb-1">Tags (Comma separated)</label>
-                        <input type="text" id="addTags" placeholder="Sci-Fi, Neon, 3D" class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-medium text-slate-300 mb-1">Description</label>
-                    <textarea id="addDesc" rows="3" placeholder="Briefly describe your art concept..." class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500"></textarea>
-                </div>
-
-                <div class="pt-2 flex justify-end space-x-3">
-                    <button type="button" onclick="closeAddModal()" class="px-4 py-2 rounded-xl text-xs font-medium text-slate-400 hover:text-white">Cancel</button>
-                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm shadow-md">Add to Gallery</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- GITHUB PAGES HOSTING GUIDE MODAL -->
-    <div id="githubModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-        <div class="relative max-w-2xl w-full glass-panel rounded-3xl border border-slate-700 p-6 sm:p-8 my-8 bg-slate-900 max-h-[85vh] overflow-y-auto">
-            <button onclick="closeGithubModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-
-            <div class="flex items-center space-x-3 mb-4">
-                <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl">
-                    <i class="fa-brands fa-github"></i>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold">Host Free on GitHub Pages</h3>
-                    <p class="text-xs text-slate-400">Step-by-step guide to publish your art portfolio website live in 3 minutes.</p>
-                </div>
-            </div>
-
-            <div class="space-y-6 text-sm text-slate-300">
-                <!-- Step 1 -->
-                <div class="flex items-start space-x-4 p-4 rounded-2xl bg-slate-800/50 border border-slate-700/50">
-                    <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center shrink-0 text-xs">1</span>
-                    <div class="space-y-1">
-                        <h4 class="font-semibold text-white">Create GitHub Repository</h4>
-                        <p class="text-xs text-slate-400">Go to GitHub.com, create a new repository (e.g. <code class="bg-black/50 px-1.5 py-0.5 rounded text-amber-300">art-portfolio</code>), set it to <strong>Public</strong>, and check "Add a README file".</p>
-                    </div>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="flex items-start space-x-4 p-4 rounded-2xl bg-slate-800/50 border border-slate-700/50">
-                    <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center shrink-0 text-xs">2</span>
-                    <div class="space-y-1">
-                        <h4 class="font-semibold text-white">Save File as index.html</h4>
-                        <p class="text-xs text-slate-400">Save this webpage file as <code class="bg-black/50 px-1.5 py-0.5 rounded text-amber-300">index.html</code> on your computer.</p>
-                    </div>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="flex items-start space-x-4 p-4 rounded-2xl bg-slate-800/50 border border-slate-700/50">
-                    <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center shrink-0 text-xs">3</span>
-                    <div class="space-y-1">
-                        <h4 class="font-semibold text-white">Upload index.html to Repository</h4>
-                        <p class="text-xs text-slate-400">In your GitHub repo page, click <strong>Add file</strong> → <strong>Upload files</strong>, drag your <code class="bg-black/50 px-1.5 py-0.5 rounded text-amber-300">index.html</code>, and click <strong>Commit changes</strong>.</p>
-                    </div>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="flex items-start space-x-4 p-4 rounded-2xl bg-slate-800/50 border border-slate-700/50">
-                    <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center shrink-0 text-xs">4</span>
-                    <div class="space-y-1">
-                        <h4 class="font-semibold text-white">Enable GitHub Pages</h4>
-                        <p class="text-xs text-slate-400">Go to Repo <strong>Settings</strong> → <strong>Pages</strong> (on left sidebar). Under <em>Branch</em>, select <code class="bg-black/50 px-1.5 py-0.5 rounded text-amber-300">main</code> (or <code class="bg-black/50 px-1.5 py-0.5 rounded text-amber-300">master</code>) branch and click <strong>Save</strong>.</p>
-                    </div>
-                </div>
-
-                <!-- Live link notice -->
-                <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs flex items-center space-x-3">
-                    <i class="fa-solid fa-globe text-lg shrink-0"></i>
-                    <span>Your portfolio will be live at: <code class="font-mono text-white">https://&lt;your-username&gt;.github.io/&lt;repo-name&gt;/</code></span>
-                </div>
-            </div>
-
-            <div class="mt-6 text-right">
-                <button onclick="closeGithubModal()" class="px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-medium text-xs">Got it!</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript Data & Logic -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Initial Sample Artworks Data (Pre-populated across 4 categories)
-        let artworkData = [
-            // BACKGROUNDS
+        // Curated 2D Artwork Data
+        const artworkData = [
             {
-        id: 1,
-        title: "Three Dragons Concept",
-        category: "Background",
-        imgUrl: "three-dragon.jpg",
-        software: "Photoshop",
-        date: "Oct 2026",
-        tags: ["Environment", "Fantasy", "Game Art", "2D"],
-        description: "Detailed background illustration featuring a majestic three-dragon concept composition."
-    },
-    {
-        id: 2,
-        title: "Dragon Topper Artwork",
-        category: "Background",
-        imgUrl: "dragong-topper.png",
-        software: "Photoshop",
-        date: "Oct 2026",
-        tags: ["Environment", "Game Art", "Topper"],
-        description: "Vibrant slot game topper artwork featuring dynamic dragon themes."
-    },
-    {
-        id: 3,
-        title: "Dragon Main Screen",
-        category: "Background",
-        imgUrl: "dragong.png",
-        software: "Photoshop",
-        date: "Oct 2026",
-        tags: ["Environment", "Game Art", "Main Screen"],
-        description: "Immersive main screen game background featuring rich details and fantasy elements."
-    },
-    {
-        id: 4,
-        title: "God Zeus Main Screen",
-        category: "Background",
-        imgUrl: "god-zues-mainscreen.png",
-        software: "Photoshop",
-        date: "Sep 2026",
-        tags: ["Mythology", "Game Art", "Main Screen"],
-        description: "Epic mythological background art depicting the power of Zeus for a slot game main screen."
-    },
-    {
-        id: 5,
-        title: "God Zeus Topper",
-        category: "Background",
-        imgUrl: "god-zues-topper.png",
-        software: "Photoshop",
-        date: "Sep 2026",
-        tags: ["Mythology", "Game Art", "Topper"],
-        description: "High-voltage topper graphic designed to complement the Zeus game layout."
-    },
-    {
-        id: 6,
-        title: "Inferno Pagoda",
-        category: "Background",
-        imgUrl: "inferno-pagoda.png",
-        software: "Photoshop, Blender",
-        date: "Aug 2026",
-        tags: ["Environment", "Fantasy", "Architecture"],
-        description: "Fiery architectural concept art featuring an ancient pagoda surrounded by intense flames and embers."
-    },
-    {
-        id: 7,
-        title: "Lightning Pagoda",
-        category: "Background",
-        imgUrl: "lightning-pagoda.png",
-        software: "Photoshop, Blender",
-        date: "Aug 2026",
-        tags: ["Environment", "Storm", "Architecture"],
-        description: "Atmospheric storm environment showcasing a traditional pagoda struck by dramatic lightning bolts."
-    },
-    {
-        id: 8,
-        title: "Medusa Main Screen",
-        category: "Background",
-        imgUrl: "medusa-mainscreen.png",
-        software: "Photoshop",
-        date: "Jul 2026",
-        tags: ["Mythology", "Character", "Game Art"],
-        description: "Dark and captivating mythological background art centered around the legendary Gorgon."
-    },
-
-            // CHARACTERS
-            
-
-            // SYMBOLS
-            
+                id: 'art-1',
+                title: 'Mystic Mountain Sentinel',
+                category: 'environments',
+                url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80',
+                thumb: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80',
+                author: 'Eriko Paulo Opano'
+            },
+            {
+                id: 'art-2',
+                title: 'Neon Wanderer - Character Study',
+                category: 'characters',
+                url: 'https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=1920&q=80',
+                thumb: 'https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=600&q=80',
+                author: 'Eriko Paulo Opano'
+            },
+            {
+                id: 'art-3',
+                title: 'Prismatic Flow Illustration',
+                category: 'illustrations',
+                url: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=1920&q=80',
+                thumb: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=600&q=80',
+                author: 'Eriko Paulo Opano'
+            },
+            {
+                id: 'art-4',
+                title: 'Sylvan Woodland Sketch',
+                category: 'sketches',
+                url: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=80',
+                thumb: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80',
+                author: 'Eriko Paulo Opano'
+            },
+            {
+                id: 'art-5',
+                title: 'Celestial Aurora Horizon',
+                category: 'environments',
+                url: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1920&q=80',
+                thumb: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=600&q=80',
+                author: 'Eriko Paulo Opano'
+            },
+            {
+                id: 'art-6',
+                title: 'Monochrome Alley Concept',
+                category: 'illustrations',
+                url: 'https://images.unsplash.com/photo-1477959858617-67f30ac4fe78?auto=format&fit=crop&w=1920&q=80',
+                thumb: 'https://images.unsplash.com/photo-1477959858617-67f30ac4fe78?auto=format&fit=crop&w=600&q=80',
+                author: 'Eriko Paulo Opano'
+            },
+            {
+                id: 'art-7',
+                title: 'Cosmic Abstract Composition',
+                category: 'sketches',
+                url: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80',
+                thumb: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80',
+                author: 'Eriko Paulo Opano'
+            },
+            {
+                id: 'art-8',
+                title: 'Solitude - Character Vignette',
+                category: 'characters',
+                url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80',
+                thumb: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80',
+                author: 'Eriko Paulo Opano'
+            }
         ];
 
-        let currentFilter = 'all';
+        // DOM Element references
+        const galleryGrid = document.getElementById('gallery-grid');
+        const emptyState = document.getElementById('empty-state');
 
-        // Render Gallery Cards
-        function renderGallery() {
-            const grid = document.getElementById('artGrid');
-            const emptyState = document.getElementById('emptyState');
-            grid.innerHTML = '';
+        // Modal
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const modalImage = document.getElementById('modal-image');
+        const modalTitle = document.getElementById('modal-title');
+        const modalCategory = document.getElementById('modal-category');
+        const modalAuthor = document.getElementById('modal-author');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
 
-            const filteredData = currentFilter === 'all'
-                ? artworkData
-                : artworkData.filter(item => item.category === currentFilter);
+        // Initialize application on page load
+        window.onload = function() {
+            lucide.createIcons();
+            renderGalleryGrid('all');
+            setupFilterTabs();
+            setupEventListeners();
+        };
 
-            document.getElementById('statTotalArt').textContent = artworkData.length;
+        // RENDER GALLERY GRID
+        function renderGalleryGrid(categoryFilter) {
+            categoryFilter = categoryFilter || 'all';
+            galleryGrid.innerHTML = '';
+
+            const filteredData = categoryFilter === 'all' 
+                ? artworkData 
+                : artworkData.filter(item => item.category === categoryFilter);
 
             if (filteredData.length === 0) {
                 emptyState.classList.remove('hidden');
             } else {
                 emptyState.classList.add('hidden');
-               
-                filteredData.forEach(art => {
-                    const card = document.createElement('div');
-                    card.className = "group relative rounded-2xl overflow-hidden glass-panel border border-slate-800 light:border-slate-300 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-indigo-500/10 cursor-pointer flex flex-col";
-                    card.onclick = () => openLightbox(art.id);
+            }
 
-                    // Category Color Mapping
-                    let categoryColor = "bg-indigo-500/20 text-indigo-400 border-indigo-500/30";
-                    if (art.category === 'Background') categoryColor = "bg-cyan-500/20 text-cyan-400 border-cyan-500/30";
-                    if (art.category === 'Characters') categoryColor = "bg-purple-500/20 text-purple-400 border-purple-500/30";
-                    if (art.category === 'Symbols') categoryColor = "bg-amber-500/20 text-amber-400 border-amber-500/30";
-                    if (art.category === 'UI') categoryColor = "bg-emerald-500/20 text-emerald-400 border-emerald-500/30";
+            filteredData.forEach(art => {
+                const gridCard = document.createElement('div');
+                gridCard.className = 'group relative rounded-2xl overflow-hidden glass-card border border-neutral-800 hover:border-neutral-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex flex-col bg-black';
 
-                    card.innerHTML = `
-                        <div class="relative aspect-[4/3] w-full overflow-hidden bg-slate-900">
-                            <img src="${art.imgUrl}" alt="${art.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-                            <div class="art-card-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                <div class="w-full flex justify-between items-center text-xs text-white">
-                                    <span class="font-medium"><i class="fa-solid fa-eye mr-1"></i> View Details</span>
-                                    <span>${art.date}</span>
-                                </div>
-                            </div>
-                            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border backdrop-blur-md ${categoryColor}">
-                                ${art.category}
+                gridCard.innerHTML = `
+                    <div class="relative h-56 w-full overflow-hidden bg-neutral-900 cursor-pointer" onclick="openLightbox('${art.id}')">
+                        <img src="${art.thumb}" alt="${art.title}" class="w-full h-full object-cover art-img group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-semibold bg-black/80 text-white backdrop-blur-md uppercase tracking-wider border border-neutral-700">${art.category}</span>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="p-3 rounded-full bg-black/80 text-white backdrop-blur-md border border-neutral-600 transform scale-75 group-hover:scale-100 transition-transform">
+                                <i data-lucide="eye" class="w-5 h-5"></i>
                             </span>
                         </div>
-                        <div class="p-4 flex-1 flex flex-col justify-between">
-                            <div>
-                                <h3 class="font-bold text-base text-slate-100 light:text-slate-900 group-hover:text-indigo-400 transition-colors line-clamp-1">${art.title}</h3>
-                                <p class="text-xs text-slate-400 light:text-slate-600 mt-1 line-clamp-2">${art.description}</p>
-                            </div>
-                            <div class="mt-3 pt-3 border-t border-slate-800/60 light:border-slate-200 flex flex-wrap gap-1">
-                                ${art.tags.slice(0, 3).map(tag => `<span class="text-[10px] px-2 py-0.5 rounded-md bg-slate-800 light:bg-slate-200 text-slate-400 light:text-slate-700">#${tag}</span>`).join('')}
-                            </div>
+                    </div>
+                    <div class="p-4 flex items-center justify-between bg-neutral-950 border-t border-neutral-800">
+                        <div>
+                            <h4 class="text-sm font-semibold text-white truncate max-w-[200px]">${art.title}</h4>
+                            <p class="text-[11px] text-neutral-400">By ${art.author}</p>
                         </div>
-                    `;
-                    grid.appendChild(card);
-                });
-            }
-        }
+                        <button onclick="openLightbox('${art.id}')" class="p-2 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-neutral-300 hover:text-white transition-colors border border-neutral-700" title="View Details">
+                            <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                `;
 
-        // Filter Functionality
-        function filterGallery(category) {
-            currentFilter = category;
-           
-            // Update Tab UI
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => {
-                if (btn.getAttribute('data-category') === category) {
-                    btn.className = "filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-indigo-600 text-white shadow-md";
-                } else {
-                    btn.className = "filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-400 hover:text-white transition-all";
-                }
+                galleryGrid.appendChild(gridCard);
             });
 
-            renderGallery();
+            lucide.createIcons();
         }
 
-        // Lightbox Functions
-        function openLightbox(id) {
+        // FILTER CATEGORY TABS
+        function setupFilterTabs() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-white', 'text-black', 'shadow-md');
+                        b.classList.add('text-neutral-400');
+                    });
+
+                    btn.classList.add('bg-white', 'text-black', 'shadow-md');
+                    btn.classList.remove('text-neutral-400');
+
+                    const category = btn.getAttribute('data-category');
+                    renderGalleryGrid(category);
+                });
+            });
+        }
+
+        // LIGHTBOX MODAL LOGIC
+        window.openLightbox = function(id) {
             const art = artworkData.find(item => item.id === id);
             if (!art) return;
 
-            document.getElementById('lightboxImg').src = art.imgUrl;
-            document.getElementById('lightboxTitle').textContent = art.title;
-            document.getElementById('lightboxCategory').textContent = art.category;
-            document.getElementById('lightboxDate').textContent = art.date;
-            document.getElementById('lightboxSoftware').textContent = art.software || 'Digital Media';
-            document.getElementById('lightboxDesc').textContent = art.description;
+            modalImage.src = art.url;
+            modalTitle.textContent = art.title;
+            modalCategory.textContent = art.category;
+            modalAuthor.textContent = 'Digital 2D Artwork by ' + art.author;
 
-            const tagsContainer = document.getElementById('lightboxTags');
-            tagsContainer.innerHTML = art.tags.map(tag => `<span class="text-xs px-2.5 py-1 rounded-lg bg-slate-800 text-indigo-300">#${tag}</span>`).join('');
-
-            document.getElementById('lightboxModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
+            lightboxModal.classList.remove('hidden');
+            setTimeout(() => {
+                lightboxModal.classList.remove('opacity-0');
+            }, 10);
+        };
 
         function closeLightbox() {
-            document.getElementById('lightboxModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Add Artwork Functions
-        function openAddModal() {
-            document.getElementById('addModal').classList.remove('hidden');
-        }
-
-        function closeAddModal() {
-            document.getElementById('addModal').classList.add('hidden');
-        }
-
-        function handleAddArtwork(e) {
-            e.preventDefault();
-            const title = document.getElementById('addTitle').value;
-            const category = document.getElementById('addCategory').value;
-            const imgUrl = document.getElementById('addImgUrl').value;
-            const software = document.getElementById('addSoftware').value || 'Photoshop';
-            const tagsInput = document.getElementById('addTags').value;
-            const desc = document.getElementById('addDesc').value;
-
-            const tags = tagsInput ? tagsInput.split(',').map(t => t.trim()) : ['Art', 'Digital'];
-
-            const newArt = {
-                id: Date.now(),
-                title,
-                category,
-                imgUrl,
-                software,
-                date: "Oct 2026",
-                tags,
-                description: desc || "New digital artwork piece added."
-            };
-
-            artworkData.unshift(newArt);
-            renderGallery();
-            closeAddModal();
-           
-            // Reset form
-            e.target.reset();
-        }
-
-        // GitHub Modal
-        function openGithubModal() {
-            document.getElementById('githubModal').classList.remove('hidden');
-        }
-
-        function closeGithubModal() {
-            document.getElementById('githubModal').classList.add('hidden');
-        }
-
-        // Contact Form
-        function handleContactSubmit(e) {
-            e.preventDefault();
-            const toast = document.getElementById('contactToast');
-            toast.classList.remove('hidden');
+            lightboxModal.classList.add('opacity-0');
             setTimeout(() => {
-                toast.classList.add('hidden');
-                e.target.reset();
-            }, 3000);
+                lightboxModal.classList.add('hidden');
+            }, 300);
         }
 
-        // Theme Switcher
-        function toggleTheme() {
-            const html = document.documentElement;
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                html.classList.add('light');
-            } else {
-                html.classList.remove('light');
-                html.classList.add('dark');
-            }
-        }
+        // EVENT LISTENERS SETUP
+        function setupEventListeners() {
+            closeModalBtn.addEventListener('click', closeLightbox);
+            modalCloseBtn.addEventListener('click', closeLightbox);
+            lightboxModal.addEventListener('click', (e) => {
+                if (e.target === lightboxModal) closeLightbox();
+            });
 
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !lightboxModal.classList.contains('hidden')) {
+                    closeLightbox();
+                }
+            });
         }
-
-        // Initialize on Load
-        window.onload = function() {
-            renderGallery();
-        };
     </script>
 </body>
 </html>
