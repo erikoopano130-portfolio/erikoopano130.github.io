@@ -127,39 +127,67 @@
     </nav>
 
     <!-- 2D ARTIST PORTFOLIO HERO SECTION -->
-    <header id="hero" class="relative min-h-[85vh] flex flex-col justify-center items-center pt-28 pb-16 px-4 overflow-hidden border-b border-neutral-800">
+    <header id="hero" class="relative min-h-[85vh] flex flex-col justify-center items-center pt-28 pb-16 px-4 sm:px-8 overflow-hidden border-b border-neutral-800">
         
         <!-- Fixed Atmospheric Hero Background Art in Color -->
-        <div class="absolute inset-0 bg-cover bg-center z-0 opacity-40 scale-105" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="absolute inset-0 bg-cover bg-center z-0 opacity-40 scale-105" style="background-image: url('pharoah.png');"></div>
 
         <!-- Overlay Mask -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black z-10"></div>
 
         <!-- Hero Content Container -->
-        <div class="relative z-20 max-w-4xl mx-auto text-center flex flex-col items-center">
+        <div class="relative z-20 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-900 text-neutral-300 border border-neutral-700 text-xs font-semibold mb-6 shadow-xl backdrop-blur-md">
-                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-white"></i>
-                <span>Digital 2d Artist & Illustrator</span>
+            <!-- Left Side: Text Content -->
+            <div class="lg:col-span-7 flex flex-col items-start text-left">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-900 text-neutral-300 border border-neutral-700 text-xs font-semibold mb-6 shadow-xl backdrop-blur-md">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-white"></i>
+                    <span>Digital 2D Artist & Illustrator</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight mb-6">
+                    Mastering the Craft of <span class="underline decoration-neutral-500 underline-offset-8">2D Game Art.</span>
+                </h1>
+
+                <p class="text-base sm:text-lg text-neutral-400 font-normal leading-relaxed mb-8 max-w-2xl">
+                    Welcome to my online portfolio. I bring games to life through expert character design, high-detail slot casino game assets, and stunning game environments and backgrounds.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4">
+                    <a href="#gallery" class="px-6 py-3 rounded-xl bg-white hover:bg-neutral-200 text-black font-semibold text-sm flex items-center gap-2 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-white/10">
+                        <i data-lucide="grid" class="w-4 h-4"></i>
+                        Explore Portfolio
+                    </a>
+                    <a href="#artist-contact" class="px-6 py-3 rounded-xl glass-card hover:bg-neutral-900 text-white font-medium text-sm flex items-center gap-2 transition-all border border-neutral-700">
+                        <i data-lucide="user" class="w-4 h-4 text-neutral-300"></i>
+                        About Artist
+                    </a>
+                </div>
             </div>
 
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-tight max-w-3xl mb-6">
-                Mastering the Craft of <span class="underline decoration-neutral-500 underline-offset-8">2D Game Art.</span>
-            </h1>
-
-            <p class="text-base sm:text-lg text-neutral-400 max-w-2xl font-normal leading-relaxed mb-8">
-                Welcome to my online portfolio. I bring games to life through expert character design, high-detail slot casino game assets, and stunning game environments and backgrounds.
-            </p>
-
-            <div class="flex flex-wrap items-center justify-center gap-4">
-                <a href="#gallery" class="px-6 py-3 rounded-xl bg-white hover:bg-neutral-200 text-black font-semibold text-sm flex items-center gap-2 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-white/10">
-                    <i data-lucide="grid" class="w-4 h-4"></i>
-                    Explore Portfolio
-                </a>
-                <a href="#artist-contact" class="px-6 py-3 rounded-xl glass-card hover:bg-neutral-900 text-white font-medium text-sm flex items-center gap-2 transition-all border border-neutral-700">
-                    <i data-lucide="user" class="w-4 h-4 text-neutral-300"></i>
-                    About Artist
-                </a>
+            <!-- Right Side: Preview Image Card -->
+            <div class="lg:col-span-5 flex justify-center lg:justify-end w-full">
+                <div class="relative w-full max-w-md group rounded-2xl overflow-hidden glass-card border border-neutral-700 p-2 shadow-2xl bg-neutral-950/80 backdrop-blur-xl">
+                    <div class="relative h-80 sm:h-96 w-full rounded-xl overflow-hidden cursor-pointer protected-img-wrapper" onclick="openLightbox('art-6')">
+                        <img src="pharoah.png" alt="Pharoah Character Art Preview" class="w-full h-full object-cover art-img group-hover:scale-105" ondragstart="return false;">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-20"></div>
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-md text-[10px] font-bold bg-black/80 text-white backdrop-blur-md uppercase tracking-wider border border-neutral-700 z-30">Featured Artwork</span>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-30">
+                            <span class="p-3.5 rounded-full bg-black/80 text-white backdrop-blur-md border border-neutral-600 transform scale-75 group-hover:scale-100 transition-transform">
+                                <i data-lucide="eye" class="w-6 h-6"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-3.5 flex items-center justify-between">
+                        <div>
+                            <h3 class="text-sm font-bold text-white">Pharoah - Character Study</h3>
+                            <p class="text-xs text-neutral-400">Featured 2D Concept Asset</p>
+                        </div>
+                        <button onclick="openLightbox('art-6')" class="p-2 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-neutral-300 hover:text-white transition-colors border border-neutral-700">
+                            <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
 
         </div>
